@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename='student.css')}}">
+{% endblock %}
+{% block page_content %}
+
+  <div class="page-header">
+     <h1>{{ current_user.name.title()}}</h2>
+  </div>
+
+     <div class="row">
+       <div class="col-md-8">
+	 <h3>Current Registered Courses</h3>
+       </div>
+     </div>
+       <table class="table table-hover">
+	 <thead>
+	   <tr>
+	     <th>ID</th>
+	     <th>Name</th>
+	     <th>When</th>
+	     <th>Where</th>
+	     <th>Instructor</th>
+	    </tr>
+	 </thead>
+	 <tbody>
+	   {% for c in courses %}
+	   <tr>
+	     <td class="col-md-2">{{c['cobj'].cid}}</td>
+	     <td class="col-md-2">{{c['cobj'].cname.title()}}</td>
+	     <td class="col-md-2">{{c['cobj'].meets_at}}</td>
+	     <td class="col-md-2">{{c['cobj'].room}}</td>
+	     <td class="col-md-2">{{c['fobj'].fname.title()}}</td>
+	   </tr>
+	   {% endfor %}
+	 </tbody>
+       </table>
+     
+ 
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+  <script type="text/javascript" src="{{url_for('static', filename='student.js')}}"></script>
+{% endblock %}
