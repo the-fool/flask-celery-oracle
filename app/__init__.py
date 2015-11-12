@@ -39,5 +39,6 @@ def create_app(config_filename):
     app.jinja_env.globals.update(title=str.title)
     return app
 
-app = create_app('/home/truble/public_html/cs430_project/config.py')
 
+app = create_app('/home/truble/public_html/cs430_project/config.py')
+app.debug = True
